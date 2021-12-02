@@ -3,6 +3,21 @@ const express = require("express");
 const webpush = require("web-push");
 const bodyParser = require("body-parser");
 const path = require("path");
+// loads scheduling package
+// const schedule = require('node-schedule');
+// const job = schedule.scheduleJob('*/1 * * * *', function(){
+//     console.log('The answer to life, the universe, and everything!');
+// });
+
+
+// ssl certificate
+const fs = require('fs');
+const key = fs.readFileSync(path.join(__dirname, 'cert', 'key.pem'));
+const cert = fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem'));
+const https = require('https');
+// initiates express
+const app = express();
+const server = https.createServer({key: key, cert: cert}, app);
 
 // Accesses database modules
 const database = require('./db/db');
@@ -12,7 +27,7 @@ const User = require('./db/user');
     const dbSync = await database.sync();
 })();
 
-const app = express();
+
 
 // Serve static file for frontend
 app.use(express.static(path.join(__dirname)));
@@ -123,6 +138,6 @@ app.post('/messages/:id', async (req, res) => {
     }
 });
 
-const port = 5000;
+const sslPort = 3443;
 
-app.listen(port, () => console.log(`Server started on port ${port}`));
+server.listen(sslPort, () => console.log(`Server started on port ${sslPort}`));
