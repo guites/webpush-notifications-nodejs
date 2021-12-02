@@ -5,9 +5,10 @@ Interact with a nodejs backend via web push protocol.
 ## Features
 
 - [x] allow user subscription and unsubscription from push messaging
-- [ ] persistently identify different devices and their state
-- [ ] send message to specific devices based on their identification
+- [x] persistently identify different devices and their state
+- [x] send message to specific devices based on their identification
 - [ ] allow users to program notifications to different devices with content and expected notification time
+- [ ] install https on express server to enable devices connecting from local network to receive push
 
 ### sources
 

@@ -7,11 +7,14 @@
     <title>Push notification basics</title>
 </head>
 <body>
-
+    <aside>If you're visiting this on a local network, push notifications won't work unless you're running https.</aside>
     <h1>This is a basic setup to send push notifications using a Node js backend!</h1>
     <p>You can inspect the repository <a href="https://github.com/guites/webpush-basics-frontend">here</a>.</p>
     <p>In order for this to work, you're gonna have to <u>allow notifications</u>. Please click the button below!</p>
     <button id="notifications-button" type="button">Allow notifications</button>
+    <hr/>
+    <h2>Current Subscriptions</h2>
+    <ul id="subscriptions-list"></ul>
     <script src="client.js"></script>
 </body>
 </html>
